@@ -7,6 +7,7 @@ public class task001 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         System.out.println("zadanie1(n) = " + zadanie1(n));
+        sc.close();
     }
 
     /**

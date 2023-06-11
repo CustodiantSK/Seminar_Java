@@ -12,6 +12,7 @@ public class work001 {
         String s = sc.nextLine();
 
         System.out.println("Перевернутая фраза: " + perevorot(s));
+        sc.close();
     }
 
     /**

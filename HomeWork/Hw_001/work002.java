@@ -18,6 +18,7 @@ public class work002 {
             num1 = num2;
         }
         System.out.println("Сумма = " + sum);
+        sc.close();
     }
 
     /**

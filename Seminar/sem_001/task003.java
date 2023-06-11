@@ -7,6 +7,7 @@ public class task003 {
         Scanner sc = new Scanner(System.in);
         String stringNew = sc.nextLine();
         System.out.println("zadanie3(stringNew) = " + zadanie3(stringNew));
+        sc.close();
     }
 
     /**

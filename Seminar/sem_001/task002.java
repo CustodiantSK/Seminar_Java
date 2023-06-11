@@ -18,6 +18,7 @@ public class task002 {
         }
         // String b = sc.next();
         System.out.println("count = " + counter);
+        sc.close();
     }
 
     /**
