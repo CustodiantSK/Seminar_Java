@@ -1,5 +1,12 @@
 package HomeWork.Hw_003;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
+
+import HomeWork.Hw_003.dataFiles.Product;
+
 /* 2. Сведения о товаре состоят из наименования, 
 страны-производителя, веса, цены, сорта. 
 Получить наименования товаров заданного сорта с наименьшей ценой.
@@ -7,62 +14,82 @@ package HomeWork.Hw_003;
 public class work002 {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите сорт: ");
+        Integer qual = sc.nextInt();
+        sc.close();
+
+        String priceSortedNames = "";
+        Integer minPrice = 100000000;
+        String minPriceNames = "";
+        String country = "";
+
+        List<Product> listProducts = new ArrayList<>();
+        Product product1 = new Product(
+                "Перловка",
+                "Россия",
+                1500,
+                890,
+                1);
+
+        Product product2 = new Product(
+                "Манка",
+                "Беларусь",
+                500,
+                185,
+                0);
+
+        Product product3 = new Product(
+                "Гречка",
+                "Уругвай",
+                850,
+                802,
+                2);
+
+        Product product4 = new Product(
+                "Рис",
+                "Польша",
+                231,
+                1000,
+                1);
+
+        Product product5 = new Product(
+                "Перловка",
+                "Россия",
+                2000,
+                50,
+                0);
+
+        listProducts.add(product1);
+        listProducts.add(product2);
+        listProducts.add(product3);
+        listProducts.add(product4);
+        listProducts.add(product5);
+
+        for (Product items : listProducts) {
+            if (items.getproductSort() == qual) {
+                priceSortedNames += items.getproductName() +
+                        " --> произведено в " +
+                        items.getproductManufacturerCountry() +
+                        " --> Стоимостью: " +
+                        items.getproductPrice() +
+                        "\n";
+
+                if (minPrice > items.getproductPrice()) {
+                    minPrice = items.getproductPrice();
+                    if (Objects.equals(items.getproductPrice(), minPrice)) {
+                        minPriceNames = items.getproductName();
+                        country = items.getproductManufacturerCountry();
+                    }
+                }
+
+            }
+        }
+
+        System.out.println("Товары заданного сорта: ");
+        System.out.println(priceSortedNames);
+        System.out.println("Наименьшая цена: " + minPrice +
+                ", у продукта: " + minPriceNames +
+                " из " + country);
     }
 }
-/*
- * package module.Tovar_complex;
- * import java.util.List;
- * import java.util.Set;
- * import java.util.ArrayList;
- * import module.Tovar_complex;
- * 
- * public class Lesson_3main_hometask2 {
- * public static void main(String[] args) {
- * Tovar tovar1 = new Tovar('средний', '2', 5, 'country1', 23);
- * Tovar tovar2= new Tovar('высший', '2', 6, 'country2', 34);
- * Tovar tovar3 = new Tovar('высший', '1', 7, 'country3', 26 );
- * List<Tovar> ListTovar = new ArrayList<>();
- * ListTovar.add(tovar1);
- * ListTovar.add(tovar2);
- * ListTovar.add(tovar3);
- * 
- * // Спрашиваем нужный сорт
- * Scanner sc = new Scanner(System.in);
- * System.out.println("Введите сорт: ");
- * String qual = sc.nextInt();
- * 
- * String search = qual;
- * Integer totalExportVolume = 0;
- * 
- * // Объявляем листы
- * List<Double> ListGeneral = new ArrayList<>();
- * List<Double> ListProduct = new ArrayList<>();
- * 
- * for (int i=0; i <ListTovar.size(); i++) {
- * List<Double> ListProduct = new ArrayList<>();
- * if (ListTovar.get(1).getQuality().equals(search)) {
- * // Если товар подходит по сорту, добавляем инфу по нему его в лист
- * ListProduct, который перезаписывается в цикле
- * ListProduct.add(ListTovar.get(i).getName());
- * ListProduct.add(ListTovar.get(i).getPrice());
- * // Лист добавляем в listGeneral для дальнейшего анализа
- * listGeneral.addAll(ListProduct);
- * }
- * }
- * 
- * // Объявляем лист для результата
- * List<Double> ListResult = new ArrayList<>();
- * for (int i = 0; i < setGeneral.length+1; i++) {
- * if (ListGeneral[i].getPrice() > ListGeneral[i+1].getPrice()) {
- * // Если цена из одного листа внутри ListGeneral больше цены другого листа,
- * добавляем этот лист в ListResult
- * ListResult.add(ListGeneral[i])
- * }
- * }
- * 
- * // Выводим инфу о товаре
- * for (int i = 0; i < ListResult.length; i++) {
- * System.out.println(ListResult[i])
- * }
- * }
- */
