@@ -151,17 +151,17 @@ public class LinkedListT<T extends Comparable<T>> {
         T value;
         Node next;
 
-        Node() {
-            next = null;
-        }
+        // Node() {
+        // next = null;
+        // }
 
         Node(T _value) {
             this.value = _value;
         }
 
-        Node(T _value, Node _next) {
-            this.value = _value;
-            this.next = _next;
-        }
+        // Node(T _value, Node _next) {
+        // this.value = _value;
+        // this.next = _next;
+        // }
     }
 }
