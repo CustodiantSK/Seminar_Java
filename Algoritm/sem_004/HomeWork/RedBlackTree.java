@@ -1,7 +1,9 @@
+package HomeWork;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinTree<T extends Comparable<T>> {
+public class RedBlackTree<T extends Comparable<T>> {
     Node root;
 
     public boolean add(T value) {
@@ -153,10 +155,6 @@ public class BinTree<T extends Comparable<T>> {
         Node left;
         Node right;
 
-        Node() {
-            color = Color.Red;
-        }
-
         Node(T _value) {
             this.value = _value;
             left = null;
@@ -191,10 +189,10 @@ public class BinTree<T extends Comparable<T>> {
 
         int maxDepth = maxDepth() + 3;
         int nodeCount = nodeCount(root, 0);
-        int width = 50;// maxDepth * 4 + 2;
+        int width = 50;
         int height = nodeCount * 5;
         List<List<PrintNode>> list = new ArrayList<List<PrintNode>>();
-        for (int i = 0; i < height; i++) /* РЎРѕР·РґР°РЅРёРµ СЏС‡РµРµРє РјР°СЃСЃРёРІР° */ {
+        for (int i = 0; i < height; i++) {
             ArrayList<PrintNode> row = new ArrayList<>();
             for (int j = 0; j < width; j++) {
                 row.add(new PrintNode());
@@ -205,7 +203,7 @@ public class BinTree<T extends Comparable<T>> {
         list.get(height / 2).set(0, new PrintNode(root));
         list.get(height / 2).get(0).depth = 0;
 
-        for (int j = 0; j < width; j++) /* РџСЂРёРЅС†РёРї Р·Р°РїРѕР»РЅРµРЅРёСЏ */ {
+        for (int j = 0; j < width; j++) {
             for (int i = 0; i < height; i++) {
                 PrintNode currentNode = list.get(i).get(j);
                 if (currentNode.node != null) {
@@ -229,7 +227,7 @@ public class BinTree<T extends Comparable<T>> {
                 }
             }
         }
-        for (int i = 0; i < height; i++) /* Р§РёСЃС‚РєР° РїСѓСЃС‚С‹С… СЃС‚СЂРѕРє */ {
+        for (int i = 0; i < height; i++) {
             boolean flag = true;
             for (int j = 0; j < width; j++) {
                 if (list.get(i).get(j).str != " ") {
@@ -253,8 +251,7 @@ public class BinTree<T extends Comparable<T>> {
     }
 
     private void printLines(List<List<PrintNode>> list, int i, int j, int i2, int j2) {
-        if (i2 > i) // РРґС‘Рј РІРЅРёР·
-        {
+        if (i2 > i) {
             while (i < i2) {
                 i++;
                 list.get(i).get(j).str = "|";
@@ -300,4 +297,16 @@ public class BinTree<T extends Comparable<T>> {
         return count;
     }
 
+    public void inorder() {
+        inorder(root);
+    }
+
+    private void inorder(Node node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.value + "->" + node.color + " ");
+            inorder(node.right);
+
+        }
+    }
 }
